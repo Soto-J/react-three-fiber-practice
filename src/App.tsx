@@ -4,7 +4,10 @@
   with React-Three-Fiber.   
 
   Installation: npm install @react-three/drei
-*/
+  
+  -- leva
+  Installation: npm install leva
+  */
 import "./App.css";
 
 import { Canvas } from "@react-three/fiber";
