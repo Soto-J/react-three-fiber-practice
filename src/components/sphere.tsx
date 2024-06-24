@@ -17,10 +17,6 @@ export const Sphere = ({ position, args, color, wireframe }: SphereProps) => {
   useFrame((state, delta) => {
     sphereRef.current.position.z = Math.sin(state.clock.elapsedTime);
     sphereRef.current.rotation.x += delta * 1;
-
-    // if (isHovered) {
-    //   sphereRef.current.
-    // }
   });
 
   return (
@@ -31,7 +27,10 @@ export const Sphere = ({ position, args, color, wireframe }: SphereProps) => {
       onPointerLeave={() => setIsHovered(false)}
     >
       <sphereGeometry args={args} />
-      <meshStandardMaterial color={color} wireframe={wireframe} />
+      <meshStandardMaterial
+        color={isHovered ? "red" : color}
+        wireframe={wireframe}
+      />
     </mesh>
   );
 };
