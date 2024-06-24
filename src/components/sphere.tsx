@@ -3,6 +3,8 @@ import { useRef, useState } from "react";
 import { SphereGeometryProps, Vector3, useFrame } from "@react-three/fiber";
 import { Mesh } from "three";
 
+const SPEED = 1;
+
 type SphereProps = {
   position: Vector3;
   args: SphereGeometryProps["args"];
@@ -16,7 +18,10 @@ export const Sphere = ({ position, args, color, wireframe }: SphereProps) => {
 
   useFrame((state, delta) => {
     sphereRef.current.position.z = Math.sin(state.clock.elapsedTime);
-    sphereRef.current.rotation.x += delta * 1;
+
+    if (isHovered) {
+      sphereRef.current.rotation.x += delta * SPEED;
+    }
   });
 
   return (
