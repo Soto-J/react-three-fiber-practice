@@ -14,6 +14,7 @@ type SphereProps = {
 
 export const Sphere = ({ position, args, color, wireframe }: SphereProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
   const sphereRef = useRef<Mesh>(null!);
 
   useFrame((state, delta) => {
@@ -28,8 +29,10 @@ export const Sphere = ({ position, args, color, wireframe }: SphereProps) => {
     <mesh
       ref={sphereRef}
       position={position}
+      onClick={() => setIsClicked((prev) => !prev)}
       onPointerEnter={(e) => (e.stopPropagation, setIsHovered(true))}
       onPointerLeave={() => setIsHovered(false)}
+      scale={isClicked ? 1.5 : 1}
     >
       <sphereGeometry args={args} />
       <meshStandardMaterial

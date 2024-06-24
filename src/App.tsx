@@ -1,17 +1,25 @@
+/*
+  -- @react-three/drei: 
+  Collection of useful helpers and abstractions for working 
+  with React-Three-Fiber.   
+
+  Installation: npm install @react-three/drei
+*/
 import "./App.css";
 
 import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 
-import { Cube } from "./components/cube";
-import { Sphere } from "./components/sphere";
-import { Torus } from "./components/torus";
-import { TorusKnot } from "./components/torus-knot";
+import { Camera } from "./components/camera";
+import { Cube } from "./components/geometry/cube";
+import { Sphere } from "./components/geometry/sphere";
+import { Torus } from "./components/geometry/torus";
+import { TorusKnot } from "./components/geometry/torus-knot";
 
 const App = () => {
   return (
     <Canvas>
-      <directionalLight position={[0, 0, 2]} />
-      <ambientLight intensity={0.1} />
+      <Camera />
 
       {/* <group>
         <Cube
@@ -42,24 +50,30 @@ const App = () => {
       </group> */}
 
       <group>
-        <Sphere
+        {/* <Sphere
           position={[0, 0, 0]}
           args={[1, 40, 32]}
           color="blue"
           wireframe
-        />
+        /> */}
         {/* <Torus
           position={[-4, 0, 0]}
           args={[1, 0.3, 16, 100, 6.283185307179586]}
           rotate={[0, 0, 0]}
           color="yellow"
-        />
-        <TorusKnot
+        /> */}
+        {/* <TorusKnot
           position={[4, 0, 0]}
           args={[1, 0.297, 96, 19, 2, 3]}
           rotate={[0, 0, 0]}
           color="red"
         /> */}
+        <TorusKnot
+          position={[0, 0, 0]}
+          args={[1, 0.1, 1000, 50]}
+          rotate={[0, 0, 0]}
+          color="red"
+        />
       </group>
     </Canvas>
   );

@@ -7,6 +7,7 @@ import {
   TorusKnotGeometryProps,
 } from "@react-three/fiber";
 import { Mesh } from "three";
+import { MeshWobbleMaterial } from "@react-three/drei";
 
 type TorusProps = {
   position: Vector3;
@@ -21,7 +22,8 @@ export const TorusKnot = ({ position, args, rotate, color }: TorusProps) => {
   return (
     <mesh position={position} rotation={rotate} ref={torusKnotRef}>
       <torusKnotGeometry args={args} />
-      <meshStandardMaterial color={color} />
+      {/* <meshStandardMaterial color={color} /> */}
+      <MeshWobbleMaterial factor={5} />
     </mesh>
   );
 };
